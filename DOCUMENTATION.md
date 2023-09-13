@@ -60,7 +60,7 @@ Welcome to the official documentation for my API. This guide provides comprehens
 }
 
 
-# ☮️ Sample Usage
+#  Sample Usage
 ## Create a New Person
 **Request:**
 
