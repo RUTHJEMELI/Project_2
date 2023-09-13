@@ -1,75 +1,122 @@
-Project Documentation: ZURI
--TASK_TWO_ASSIGNMENT
-Table of Contents
-Project Overview
-Assumptions
-Setup Instructions
-Prerequisites
-Installation
-Usage
-API Endpoints
-Deployment
-Contributing
-Project Overview
-Zuri_task_two_project is an API for managing user data. Users can be retrieved, added, updated, and deleted using this API. The primary purpose of this project is to provide CRUD (Create, Read, Update, Delete) functionality for user data based on their unique user IDs.
+# API Documentation  
 
-Assumptions
-The ID of every user is known and used to retrieve data.
-Each user knows their unique user ID.
-User IDs are unique and do not repeat across users.
-Setup Instructions
-Prerequisites
-Before you begin, ensure you have met the following requirements:
+## Introduction
 
-Node.js and npm installed on your local machine.
-MongoDB installed and running.
-Installation
-Clone the repository:
-git clone [repository_url]
+Welcome to the official documentation for my API. This guide provides comprehensive information on API endpoints, request and response formats, sample usage scenarios and  known limitations.
 
-Navigate to the project directory:
-cd [project_directory]
-Install project dependencies:
-npm install
-Create a .env file in the project root directory to store environment variables. Include the following configuration:
-dotenv
-# Database connection URL (Replace with your MongoDB connection URL)
-CONNECTION_STRING=mongodb://localhost:4000/your_database_name
+## Standard Request and Response Formats
 
-# Port for the API server
-PORT=3000
-Start the API server:
-npm start
-The API should now be running locally on port 3000 (or the port specified in your .env file).
+# ☸️ Requests
 
-Usage
-API Endpoints
-The API provides the following endpoints for managing user data:
+## Create a New Person
 
-GET /api/:user_id: Retrieve a user by their ID.
-POST /api/ Add a new user.
-PUT /api/:user_id: Update a user's information by their ID.
-DELETE /:user_id: Delete a user by their ID.
-For each endpoint, replace :id with the unique user ID.
+- **Endpoint:** `POST /api/`
+- **Request Body (JSON):**
+  
+  {
+    "name": "metrine",
+  }
+  
 
-Deployment
-To deploy this API in a production environment, follow these steps:
+## Get a Person by ID
 
-Host your MongoDB database (e.g., MongoDB Atlas).
-Set up environment variables for production in your hosting environment.
-Deploy the API to a hosting platform (e.g., Heroku, AWS, Azure, render and any of your choice.).
-Update the database connection URL in your production environment.
-Ensure proper security measures (e.g., authentication and authorization) are in place to protect user data.
-Contributing
-Contributions are welcome! Please follow these guidelines when contributing to the project:
+**Endpoint:** `GET /api/:user_id`
 
-Fork the repository.
-Create a new branch for your feature or bug fix.
-Make your changes and ensure the codebase is well-tested.
-Submit a pull request with a clear description of your changes.
+### Update a Person's Profile
 
-This documentation provides an overview of your project, setup instructions, assumptions, and guidelines for contributing and deploying the API. It helps users and potential contributors understand how to use and contribute to your project effectively.
+**Endpoint:** `PUT /api/:user_id`
+
+**Request Body (JSON):**
 
 
+  {
+    "name": "Updated Name",
+
+  }
+
+## Delete a Person by ID
+
+**Endpoint:** `DELETE /api/:user_id`
+
+# ☯️ Responses
+
+#### Success Response (HTTP Status 200)
+
+**Response Body (JSON) for GET requests:**
+
+{
+  "_id": "12345",
+  "name": "metrine",
+  
+}
+
+
+#### Error Response (HTTP Status 400)
+
+**Response Body (JSON):**
+
+{
+  "error": "internal server error"
+}
+
+
+# ☮️ Sample Usage
+## Create a New Person
+**Request:**
+
+
+POST /api/
+Content-Type: application/json
+
+{
+  "name": "metrine",
+  
+}
+
+### Response (HTTP Status 200):
+
+{
+  "_id": "12345",
+  "name": "metrine",
+  
+}
+
+
+## Get a Person by ID
+### Response (HTTP Status 200):
+
+{
+  "_id": "12345",
+  "name": "metrine",
+}
+
+
+## Update a Person's Profile
+## Request:
+
+PUT /api/12345
+Content-Type: application/json
+
+{
+  "name": "Updated Name",
+}
+```
+# Response (HTTP Status 200):
+{
+  "_id": "12345",
+  "name": "Updated Name",
+}
+
+## Delete a Person by ID
+## Request:
+DELETE /api/12345
+
+## Response (HTTP Status 200):
+
+{
+  "_id": "12345",
+  "name": "Updated Name",
+  
+}
 
 
